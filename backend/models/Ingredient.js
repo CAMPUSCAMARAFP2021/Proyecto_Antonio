@@ -2,12 +2,12 @@ const {model, Schema} = require('mongoose');
 
 const schema = new Schema({
     name: String,
-    drinks: [
+    drink: [
         {type: Schema.Types.ObjectId, ref:'Drink'}
-    ]
+    ],
 })
 
-const Author = model('Author', schema);
+const Ingredient = model('Ingredient', schema);
 
 
-module.exports = Author;
+module.exports = Ingredient;
