@@ -11,7 +11,7 @@ const imageToBase64 = (file) => {
     });
   };
 
-const ExampleComponent = ({readyImage}) =>{
+const ImageComponent = ({readyImage}) =>{
     const handler = (event) =>{
     imageToBase64(event.target.files[0])
     .then(
@@ -28,4 +28,4 @@ const ExampleComponent = ({readyImage}) =>{
     return <input type="file" onChange={handler}></input>;
 }
 
-export default ExampleComponent;
+export default ImageComponent;
