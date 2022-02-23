@@ -10,5 +10,4 @@ const schema = new Schema({
 
 const Drink = model('Drink', schema);
 
-
 module.exports = Drink;
