@@ -1,17 +1,27 @@
-const imageToBase64 = require('image-to-base64');
+const imageToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
 
-
-const ExampleComponent = () =>{
+const ExampleComponent = ({readyImage}) =>{
     const handler = (event) =>{
-        imageToBase64(event.target.value) // Path to the image
+    imageToBase64(event.target.files[0])
     .then(
         (response) => {
-            console.log(response); // "cGF0aC90by9maWxlLmpwZw=="
+            readyImage(response);
         }
     )
     .catch(
         (error) => {
-            console.log(error); // Logs an error if there was one
+            console.log(error);
         }
     )
     }
