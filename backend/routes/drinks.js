@@ -1,5 +1,5 @@
 var router = require('express').Router();
-var drinksController = require('../controllers/drinks');
+var drinksController = require('../controllers/drinks.js');
 
 router.post('/',async(req, res) => {
     const {drink} = req.body;

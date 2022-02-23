@@ -2,18 +2,14 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import {
-  BrowserRouter,
   Router,
   Route,
-  Link,
-  Switch
+  Link
 } from "react-router-dom";
 import Login from "./components/login.component";
 import SignUp from "./components/signup.component";
-import Container from 'react-bootstrap/esm/Container';
 function App() {
   return (<Router>
-    <Container>
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
@@ -40,7 +36,7 @@ function App() {
         </div>
       </div>
     </div>
-    </Container></Router>
+    </Router>
   );
 }
 

@@ -14,3 +14,10 @@ const deleteDrink = async(DrinkId)=>{
 const getDrink = async()=>{
     return await Drink.find()
 }
+
+module.exports = {
+    createDrink,
+    updateDrink,
+    deleteDrink,
+    getDrink,
+};
