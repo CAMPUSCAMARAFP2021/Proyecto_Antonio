@@ -2,10 +2,7 @@ const {model, Schema} = require('mongoose');
 
 const schema = new Schema({
     name: String,
-    author: {type: Schema.Types.ObjectId, ref:'Author'},
-    ingredients: [
-        {type: Schema.Types.ObjectId, ref:'IngredientApplication'}
-    ]
+    author: {type: Schema.Types.ObjectId, ref:'Author'}
 })
 
 const Drink = model('Drink', schema);

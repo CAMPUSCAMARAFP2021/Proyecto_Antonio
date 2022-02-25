@@ -15,7 +15,7 @@ const buildJWT = (author) => {
     }, 'secreto');
 } 
 
-const login = async (name,password) => {
+const login = async (name) => {
 
     const author = await Author.findOne({name});
     return buildJWT(author);
@@ -36,7 +36,7 @@ const getAuthor = async(authorId) => {
 }
 
 const deleteAuthor = async(authorId)=> {
-    const drink = await Task.findByIdAndDelete(authorId);
+    const drink = await drink.findByIdAndDelete(authorId);
     return false;
 }
 

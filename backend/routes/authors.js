@@ -27,7 +27,7 @@ router.get('/:authorId', async(req, res) => {
     res.json(author);
 })
 
-router.use('/:authorId/tasks', async (req, res, next) => {
+router.use('/:authorId/drinks', async (req, res, next) => {
     const {authorId} = req.params;
     req.author = await authorsController.getAuthor(authorId);
     next();
