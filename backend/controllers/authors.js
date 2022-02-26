@@ -21,6 +21,14 @@ const login = async (name) => {
     return buildJWT(author);
 }
 
+const addDrinkToAuthor=async(author,drink)=>{
+    return Author.findByIdAndUpdate(author._id,
+        {
+            $push:{drinks:drink._id}
+        })
+    
+    }
+
 const createAuthor = async(author) => {
 
     author.password = encriptarPassword('hola mundo');
@@ -46,4 +54,5 @@ module.exports = {
     getAuthors,
     getAuthor,
     deleteAuthor,
+    addDrinkToAuthor
 };

@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var drinksRouter = require('./routes/drinks');
 var authorsRouter = require('./routes/authors')
+var authorization=require('./middlewares/authorization');
 
 
 var app = express();
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/authors', authorsRouter);
-app.use('/drinks', drinksRouter);
+app.use('/drinks',authorization, drinksRouter);
 // app.use('/authors', authorsRouter);
 
 // catch 404 and forward to error handler

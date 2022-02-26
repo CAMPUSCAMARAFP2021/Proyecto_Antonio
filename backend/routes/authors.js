@@ -11,8 +11,8 @@ router.post('/',async(req, res) => {
 
 
 router.post('/login',async(req, res) => {
-    const {user, password} = req.body;
-    const result = await authorsController.login(user, password);
+    const {author} = req.body;
+    const result = await authorsController.login(author.name, author.password);
     res.json(result);
 });
 
