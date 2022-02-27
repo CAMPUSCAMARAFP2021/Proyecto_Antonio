@@ -69,6 +69,7 @@ Este proyecto está bajo la Licencia (AntonioStudios) - mira el archivo [LICENSE
 * Nico me invita a cachimbita 🧨.
 * Agradeciamientos a Angel por la paciencia y consideracion con los papus 🎱. 
 * Gracias gracias gracias.
+* TitoFrost AGRADECIDO por los ARAM 🪕.
 
 ---
 ⌨️ con 🐱‍👤 por [Antonio Castillo](https://github.com/Antoniooo266) (∪.∪ )...zzz
