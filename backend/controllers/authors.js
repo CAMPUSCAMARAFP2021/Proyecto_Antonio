@@ -44,7 +44,7 @@ const getAuthor = async(authorId) => {
 }
 
 const deleteAuthor = async(authorId)=> {
-    const drink = await drink.findByIdAndDelete(authorId);
+    await Author.findByIdAndDelete(authorId);
     return false;
 }
 
