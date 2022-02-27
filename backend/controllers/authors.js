@@ -31,7 +31,7 @@ const addDrinkToAuthor=async(author,drink)=>{
 
 const createAuthor = async(author) => {
 
-    author.password = encriptarPassword('hola mundo');
+    author.password = encriptarPassword('JIJI');
     return await Author.create(author);
 }
 
