@@ -15,15 +15,23 @@ const buildJWT = (author) => {
     }, 'secreto');
 } 
 
-const login = async (name,password) => {
+const login = async (name) => {
 
     const author = await Author.findOne({name});
     return buildJWT(author);
 }
 
+const addDrinkToAuthor=async(author,drink)=>{
+    return Author.findByIdAndUpdate(author._id,
+        {
+            $push:{drinks:drink._id}
+        })
+    
+    }
+
 const createAuthor = async(author) => {
 
-    author.password = encriptarPassword('hola mundo');
+    author.password = encriptarPassword('JIJI');
     return await Author.create(author);
 }
 
@@ -36,7 +44,7 @@ const getAuthor = async(authorId) => {
 }
 
 const deleteAuthor = async(authorId)=> {
-    const drink = await Task.findByIdAndDelete(authorId);
+    await Author.findByIdAndDelete(authorId);
     return false;
 }
 
@@ -46,4 +54,5 @@ module.exports = {
     getAuthors,
     getAuthor,
     deleteAuthor,
+    addDrinkToAuthor
 };

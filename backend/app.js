@@ -3,13 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const {connect} = require('mongoose');
-const {MONGODB_URL} = process.env;
-connect(MONGODB_URL, () => console.log('base de datos conectada'));
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var drinksRouter = require('./routes/drinks');
+var authorsRouter = require('./routes/authors')
+var authorization=require('./middlewares/authorization');
+
 
 var app = express();
 app.use(cors());
@@ -26,8 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/drinks', authorization, tasksRouter);
 app.use('/authors', authorsRouter);
+app.use('/drinks',authorization, drinksRouter);
+// app.use('/authors', authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

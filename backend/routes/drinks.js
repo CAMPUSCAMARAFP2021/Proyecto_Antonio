@@ -1,15 +1,15 @@
 var router = require('express').Router();
-var drinksController = require('../controllers/drinks');
+var drinksController = require('../controllers/drinks.js');
 
 router.post('/',async(req, res) => {
     const {drink} = req.body;
-    const result =  await drinksController.createDrink(drink);
+    drink.author= req.author._id;
+    const result =  await drinksController.createDrink(drink,req.author);
     res.json(result);
 });
 
 router.get('/', async(req, res) => {
-    const {author} = req;
-    const drinks = await drinksController.getDrink(author);
+    const drinks = await drinksController.getDrink(req);
     res.json(drinks);
 })
 

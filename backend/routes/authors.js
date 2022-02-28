@@ -3,17 +3,17 @@ var authorsController = require('../controllers/authors');
 
 var drinkRouter = require('./drinks');
 
-router.post('/',async(req, res) => {
+router.post('/register',async(req, res) => {
     const {author} = req.body;
     const result =  await authorsController.createAuthor(author);
-    res.json(result);
+    res.redirect('/home.html?authorization='+result);
 });
 
 
 router.post('/login',async(req, res) => {
-    const {user, password} = req.body;
-    const result = await authorsController.login(user, password);
-    res.json(result);
+    const {author} = req.body;
+    const result = await authorsController.login(author.name, author.password);
+    res.redirect('/home.html?authorization='+result);
 });
 
 router.get('/', async(req, res) => {
@@ -27,7 +27,7 @@ router.get('/:authorId', async(req, res) => {
     res.json(author);
 })
 
-router.use('/:authorId/tasks', async (req, res, next) => {
+router.use('/:authorId/drinks', async (req, res, next) => {
     const {authorId} = req.params;
     req.author = await authorsController.getAuthor(authorId);
     next();
