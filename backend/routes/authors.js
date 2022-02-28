@@ -5,10 +5,11 @@ var authorsController = require('../controllers/authors');
 var drinkRouter = require('./drinks');
 
 router.post('/register',async(req, res) => {
-    const {author} = req.body;
+    const author = req.body;
+    console.log(author)
     const result =  await authorsController.createAuthor(author);
-    res.json(result);
-    //res.redirect('/home.html?authorization='+result);
+    //res.json(result);
+    res.redirect('/home.html?authorization='+result);
 });
 
 
@@ -16,7 +17,7 @@ router.post('/login',async(req, res) => {
     const {author} = req.body;
     const result = await authorsController.login(author.name, author.password);
     res.json(result);
-    //res.redirect('/home.html?authorization='+result);
+    res.redirect('/home.html?authorization='+result);
 });
 
 router.get('/', async(req, res) => {
