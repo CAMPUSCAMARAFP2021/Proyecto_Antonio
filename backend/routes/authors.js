@@ -14,9 +14,9 @@ router.post('/register',async(req, res) => {
 
 
 router.post('/login',async(req, res) => {
-    const {author} = req.body;
+    const author = req.body;
     const result = await authorsController.login(author.name, author.password);
-    res.json(result);
+    //res.json(result);
     res.redirect('/home.html?authorization='+result);
 });
 
