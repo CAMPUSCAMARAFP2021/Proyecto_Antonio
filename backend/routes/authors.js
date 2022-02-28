@@ -4,12 +4,11 @@ var authorsController = require('../controllers/authors');
 
 var drinkRouter = require('./drinks');
 
-router.post('/register',async(req, res) => {
+router.post('/',async(req, res) => {
     const author = req.body;
     console.log(author)
     const result =  await authorsController.createAuthor(author);
-    //res.json(result);
-    res.redirect('/home.html?authorization='+result);
+    res.json(result);
 });
 
 
