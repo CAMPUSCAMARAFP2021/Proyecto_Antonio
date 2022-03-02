@@ -37,7 +37,7 @@
   </head>
   <body class="text-center">
     <main class="form-signin">
-      <form action="/authors/register" method="POST">
+      <form action="/authors/register" method="POST" onsubmit="(e)=> {e.preventDefault() = false}">
         <img class="mb-4" src="img/cocktail.png" alt="CockteLand Logo" width="82" height="82">
         <h1 class="h3 mb-3 fw-normal" style="color: rgb(255, 255, 255);">Please Register</h1>
 
