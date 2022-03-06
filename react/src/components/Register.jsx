@@ -13,7 +13,7 @@ const Register = ({onRegisterClick}) => {
     <main class="form-signin">
     
   
-        <h1 class="h3 mb-3 fw-normal">Please register</h1>
+        <h1 class="h3 mb-3 fw-normal">Register (•_•)</h1>
         <div class="form-floating">
         <input type="text"class="form-control"id="username" name={author} onChange={inputAuthorHandler}></input><br/>
         <label for="username">Author Name</label>

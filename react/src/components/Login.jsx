@@ -14,7 +14,7 @@ const Login = ({onLoginClick}) => {
     <main class="form-signin">
     
   
-        <h1 class="h3 mb-3 fw-normal">Sing-In</h1>
+        <h1 class="h3 mb-3 fw-normal">Sing-In ╰（‵□′）╯</h1>
         <div class="form-floating">
         <input type="text"class="form-control"id="username" name={author} onChange={inputAuthorHandler}></input><br/>
         <label for="username">Author Name</label>

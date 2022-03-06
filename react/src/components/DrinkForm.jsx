@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from './Button';
-import "react-datepicker/dist/react-datepicker.css";
 
 const DrinkForm = ({createDrink}) => {
     const [drink, setDrink] = useState(

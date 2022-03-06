@@ -5,7 +5,7 @@ const authorization = require('../middlewares/authorization');
 var drinkRouter = require('./drinks');
 
 router.post('/',async(req, res) => {
-    const author = req.body;
+    const {author} = req.body;
     console.log(author)
     const result =  await authorsController.createAuthor(author);
     res.json(result);
@@ -14,7 +14,7 @@ router.post('/',async(req, res) => {
 
 router.post('/login',async(req, res) => {
     const{author,pass}=req.body
-    const result=await authorsControllers.login(author,pass);
+    const result=await authorsController.login(author,pass);
     res.json(result)
 });
 

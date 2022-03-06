@@ -2,8 +2,8 @@ const Author = require('../models/Author');
 const jwt = require('jsonwebtoken');
 
 
-const encriptarPassword = (pass) => {
-    return pass;
+const encriptarPassword = (password) => {
+    return password;
 }
 
 const buildJWT = (author) => {
@@ -15,11 +15,11 @@ const buildJWT = (author) => {
     }, 'secreto');
 } 
 
-const login = async (name, pass) => {
+const login = async (name, password) => {
 
     const Correctauthor=await Author.findOne({name})
     if(!Correctauthor) throw new Error("author not found");
-    if(pass == Correctauthor.pass){ return buildJWT(Correctauthor)
+    if(password == Correctauthor.password){ return buildJWT(Correctauthor)
     } else{
     throw new Error("pass incorrect")}
 }
@@ -27,17 +27,17 @@ const login = async (name, pass) => {
 const addDrinkToAuthor=async(author,drink)=>{
     return Author.findByIdAndUpdate(author._id,
         {
-            $push:{drinks:drink._id}
+            $push:{drinks:drink}
         })
     
     }
 
 const createAuthor = async(author) => {
     const {name} = author
-    const checkuser = await Author.findOne({name})
+    const checkuser = await Author.find({name})
     console.log(name, checkuser)
-    if(checkuser == null){
-        author.pass = encryptarPass(author.pass)
+    if(checkuser == ""){
+        author.password = encriptarPassword(author.password)
         const newAuthor = await Author.create(author)
         return buildJWT(newAuthor)
     }else{
@@ -60,12 +60,6 @@ const getAuthor = async(authorId) => {
 const deleteAuthor = async(authorId)=> {
     await Author.findByIdAndDelete(authorId);
     return false;
-}
-
-const addDrinkToAuthor = async(author, drink) =>{
-    return await Author.findByIdAndUpdate(author._id,{
-        $push:{drinks:drink}
-    })
 }
 
 module.exports = {

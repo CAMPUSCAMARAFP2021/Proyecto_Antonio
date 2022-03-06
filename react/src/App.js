@@ -25,7 +25,7 @@ const App = () =>{
    
   return <Container className="p-3">
      <Container className="p-5 mb-4 bg-light rounded-3">
-     <img class="mb-4" src={image} alt="" width="250" height="135"/>
+     <center><img class="mb-4" src={image} alt="´CockelLand" width="250" height="250"/></center>
      <br></br>
        {(jwt) ? <>
          <LogOutButton onLogOut={() => setJwt(false)}></LogOutButton>
