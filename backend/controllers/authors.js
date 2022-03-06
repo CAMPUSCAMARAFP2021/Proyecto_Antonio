@@ -15,10 +15,13 @@ const buildJWT = (author) => {
     }, 'secreto');
 } 
 
-const login = async (name) => {
+const login = async (name, pass) => {
 
-    const author = await Author.findOne({name});
-    return buildJWT(author);
+    const Correctauthor=await Author.findOne({name})
+    if(!Correctauthor) throw new Error("author not found");
+    if(pass == Correctauthor.pass){ return buildJWT(Correctauthor)
+    } else{
+    throw new Error("pass incorrect")}
 }
 
 const addDrinkToAuthor=async(author,drink)=>{
@@ -30,9 +33,20 @@ const addDrinkToAuthor=async(author,drink)=>{
     }
 
 const createAuthor = async(author) => {
-    console.log(author.password)
-    author.password = encriptarPassword(author.password)
-    return await Author.create(author);
+    const {name} = author
+    const checkuser = await Author.findOne({name})
+    console.log(name, checkuser)
+    if(checkuser == null){
+        author.pass = encryptarPass(author.pass)
+        const newAuthor = await Author.create(author)
+        return buildJWT(newAuthor)
+    }else{
+        throw new Error("Autor ya registrado")
+    }
+}
+
+const updateAuthor=async(authorId,author)=>{
+    return await Author.findById(authorId).update(author);
 }
 
 const getAuthors = async() => {
@@ -48,11 +62,19 @@ const deleteAuthor = async(authorId)=> {
     return false;
 }
 
+const addDrinkToAuthor = async(author, drink) =>{
+    return await Author.findByIdAndUpdate(author._id,{
+        $push:{drinks:drink}
+    })
+}
+
 module.exports = {
     login,
+    encriptarPassword,
     createAuthor,
     getAuthors,
     getAuthor,
     deleteAuthor,
+    updateAuthor,
     addDrinkToAuthor
 };

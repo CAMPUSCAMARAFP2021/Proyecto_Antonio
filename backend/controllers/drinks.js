@@ -8,11 +8,11 @@ const createDrink = async(drink, author)=>{
     return create;
 }
 const updateDrink = async(DrinkId, drink)=>{
-     await Drink.findById(DrinkId).update(drink);
-    return true;
+    await Drink.findOne({DrinkId}).update(drink);
+    return true
 }
 const deleteDrink = async(DrinkId)=>{
-     await Drink.findByIdAndDelete(DrinkId);
+     const drink = await Drink.findByIdAndDelete(DrinkId);
      return true;
 }
 const getDrink = async({author})=>{

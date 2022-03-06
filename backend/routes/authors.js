@@ -1,7 +1,7 @@
 var router = require('express').Router();
-const { json } = require('stream/consumers');
+const { request } = require('express');
 var authorsController = require('../controllers/authors');
-
+const authorization = require('../middlewares/authorization');
 var drinkRouter = require('./drinks');
 
 router.post('/',async(req, res) => {
@@ -13,10 +13,9 @@ router.post('/',async(req, res) => {
 
 
 router.post('/login',async(req, res) => {
-    const author = req.body;
-    const result = await authorsController.login(author.name, author.password);
-    //res.json(result);
-    res.redirect('/home.html?authorization='+result);
+    const{author,pass}=req.body
+    const result=await authorsControllers.login(author,pass);
+    res.json(result)
 });
 
 router.get('/', async(req, res) => {
@@ -30,7 +29,7 @@ router.get('/:authorId', async(req, res) => {
     res.json(author);
 })
 
-router.use('/:authorId/drinks', async (req, res, next) => {
+router.use('/:authorId/drinks',authorization, async (req, res, next) => {
     const {authorId} = req.params;
     req.author = await authorsController.getAuthor(authorId);
     next();

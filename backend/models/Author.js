@@ -6,7 +6,7 @@ const schema = new Schema({
     email: String,
     password: String,
     drinks: [
-        {type: Schema.Types.ObjectId, ref:'Drink'}
+        {type: Schema.Types.ObjectId, ref:'drinks'}
     ]
 })
 
